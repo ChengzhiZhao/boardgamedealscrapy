@@ -8,9 +8,9 @@ class CollStuffIncSpider(scrapy.Spider):
     def start_requests(self):
         urls = []
         headers = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:48.0) Gecko/20100101 Firefox/48.0'}
-        for i in range(1,2):
+        for i in range(1,3):
             print 'scrapy on page' + str(i)
-            urls.append('https://www.coolstuffinc.com/main_saleItems.php?p=1&s=5&sb=ratings|desc'.format(i))
+            urls.append('https://www.coolstuffinc.com/main_saleItems.php?p={0}&s=5&sb=ratings|desc'.format(i))
         for url in urls:
             yield scrapy.Request(url=url, callback=self.parse, headers=headers)
 
